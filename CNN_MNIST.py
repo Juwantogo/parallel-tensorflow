@@ -2,9 +2,17 @@
 #It is primarily taken from the TensorFlow tutorial with small modifications.
 #In particular, the deprecated tf.nn.softmax_cross_entropy_with_logits(...) is
 #replaced with tf.nn.softmax_cross_entropy_with_logits_v2(...).
-print("beforePROGRAM")
+print("beforePROGRA")
+#import sys
+#sys.path.append('/opt/packages/python/2_7_11_gcc/lib/python2.7/site-packages/mpi4py/')
+from mpi4py import MPI
+#import tensorflow.contrib.mpi as mpi
 from tensorflow.examples.tutorials.mnist import input_data
 import tensorflow as tf
+
+comm = MPI.COMM_WORLD
+rank = comm.Get_rank()
+size = comm.Get_size()
 
 print("before")
 mnist = input_data.read_data_sets(".", one_hot=True)
@@ -44,14 +52,31 @@ accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
 
 sess = tf.InteractiveSession()
 
+
 sess.run(tf.global_variables_initializer())
-for i in range(20000):
+binSize = 20000/size
+for i in range(20000/size):
   print("i = %d"%(i))
   batch = mnist.train.next_batch(50)
-  if i%100 == 0:
+  print("batch %d"%(binSize*rank+i))
+  if (binSize*rank+i)%100 == 0:
     train_accuracy = accuracy.eval(feed_dict={x:batch[0], y_: batch[1], keep_prob: 1.0})
-    print("step %d, training accuracy %g"%(i, train_accuracy))
+    print("step %d, training accuracy %g"%( binSize*rank+i, train_accuracy))
   train_step.run(feed_dict={x: batch[0], y_: batch[1], keep_prob: 0.5})
+
+#data = comm.gather(data, root=0)
 
 print("test accuracy %g"%accuracy.eval(feed_dict={
     x: mnist.test.images, y_: mnist.test.labels, keep_prob: 1.0}))
+
+
+#for i in range(20000):
+  #print("i = %d"%(i))
+  #batch = mnist.train.next_batch(50)
+  #if i%100 == 0:
+   # train_accuracy = accuracy.eval(feed_dict={x:batch[0], y_: batch[1], keep_prob: 1.0})
+  #  print("step %d, training accuracy %g"%(i, train_accuracy))
+ # train_step.run(feed_dict={x: batch[0], y_: batch[1], keep_prob: 0.5})
+
+#print("test accuracy %g"%accuracy.eval(feed_dict={
+  #  x: mnist.test.images, y_: mnist.test.labels, keep_prob: 1.0}))

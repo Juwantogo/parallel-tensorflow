@@ -1,0 +1,41 @@
+tensorflow/1.5_gpu(22):ERROR:150: Module 'tensorflow/1.5_gpu' conflicts with the currently loaded module(s) 'python/2.7.14_gcc5_np1.13'
+tensorflow/1.5_gpu(22):ERROR:102: Tcl command execution failed: conflict python
+
+python/intel_2.7.14(22):ERROR:150: Module 'python/intel_2.7.14' conflicts with the currently loaded module(s) 'python/2.7.14_gcc5_np1.13'
+python/intel_2.7.14(22):ERROR:102: Tcl command execution failed: conflict python
+
+WARNING:tensorflow:From Ctest.py:138: softmax_cross_entropy_with_logits (from tensorflow.python.ops.nn_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+
+Future major versions of TensorFlow will allow gradients to flow
+into the labels input on backprop by default.
+
+See tf.nn.softmax_cross_entropy_with_logits_v2.
+
+2018-04-14 19:25:17.223325: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1105] Found device 0 with properties: 
+name: Tesla P100-PCIE-16GB major: 6 minor: 0 memoryClockRate(GHz): 1.3285
+pciBusID: 0000:81:00.0
+totalMemory: 15.89GiB freeMemory: 15.60GiB
+2018-04-14 19:25:17.661082: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1105] Found device 1 with properties: 
+name: Tesla P100-PCIE-16GB major: 6 minor: 0 memoryClockRate(GHz): 1.3285
+pciBusID: 0000:87:00.0
+totalMemory: 15.89GiB freeMemory: 15.60GiB
+2018-04-14 19:25:17.662463: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Device peer to peer matrix
+2018-04-14 19:25:17.662520: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1126] DMA: 0 1 
+2018-04-14 19:25:17.662537: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1136] 0:   Y Y 
+2018-04-14 19:25:17.662545: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1136] 1:   Y Y 
+2018-04-14 19:25:17.662565: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1195] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: Tesla P100-PCIE-16GB, pci bus id: 0000:81:00.0, compute capability: 6.0)
+2018-04-14 19:25:17.662577: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1195] Creating TensorFlow device (/device:GPU:1) -> (device: 1, name: Tesla P100-PCIE-16GB, pci bus id: 0000:87:00.0, compute capability: 6.0)
+Extracting ./train-images-idx3-ubyte.gz
+Extracting ./train-labels-idx1-ubyte.gz
+Extracting ./t10k-images-idx3-ubyte.gz
+Extracting ./t10k-labels-idx1-ubyte.gz
+Step 1: Minibatch Loss= 2.4346, Training Accuracy= 0.131, 139 Examples/sec
+Step 100: Minibatch Loss= 0.0217, Training Accuracy= 0.988, 14550 Examples/sec
+Step 200: Minibatch Loss= 0.0273, Training Accuracy= 0.990, 13220 Examples/sec
+Optimization Finished!
+Testing Accuracy: 0.991929
+
+real	0m46.056s
+user	3m19.750s
+sys	0m29.544s

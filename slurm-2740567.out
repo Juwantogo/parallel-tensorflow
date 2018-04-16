@@ -1,0 +1,12 @@
+tensorflow/1.5_gpu(23):ERROR:150: Module 'tensorflow/1.5_gpu' conflicts with the currently loaded module(s) 'python2/2.7.11_gcc_np1.11'
+tensorflow/1.5_gpu(23):ERROR:102: Tcl command execution failed: conflict python2
+
+/var/slurmd/job2740567/slurm_script: line 9: activate: No such file or directory
+Traceback (most recent call last):
+  File "CNN_MNISTorig.py", line 6, in <module>
+    from tensorflow.examples.tutorials.mnist import input_data
+ImportError: No module named tensorflow.examples.tutorials.mnist
+
+real	0m0.082s
+user	0m0.010s
+sys	0m0.016s

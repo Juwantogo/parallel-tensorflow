@@ -1,0 +1,14 @@
+tensorflow/1.5_gpu(22):ERROR:150: Module 'tensorflow/1.5_gpu' conflicts with the currently loaded module(s) 'python/2.7.14_gcc5_np1.13'
+tensorflow/1.5_gpu(22):ERROR:102: Tcl command execution failed: conflict python
+
+python/intel_2.7.14(22):ERROR:150: Module 'python/intel_2.7.14' conflicts with the currently loaded module(s) 'python/2.7.14_gcc5_np1.13'
+python/intel_2.7.14(22):ERROR:102: Tcl command execution failed: conflict python
+
+  File "CNNmine.py", line 45
+    with tf.device('/gpu:0')
+                           ^
+SyntaxError: invalid syntax
+
+real	0m0.094s
+user	0m0.019s
+sys	0m0.015s
